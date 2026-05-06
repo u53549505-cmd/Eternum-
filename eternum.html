@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eternum: The Universum Engine - By Rrandom</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --cosmic-dark: #0a0a1f;
+            --cosmic-gold: #ffd700;
+            --cosmic-cyan: #00f0ff;
+            --cosmic-purple: #8b5cf6;
+            --cosmic-slate: #1e293b;
+            --cosmic-light: #e0e0ff;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, var(--cosmic-dark) 0%, #1a0a2e 50%, #0f0f2e 100%);
+            color: var(--cosmic-light);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .container {
+            max-width: 900px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        .header {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            border-bottom: 1px solid rgba(255, 215, 0, 0.2);
+            margin-bottom: 40px;
+        }
+
+        .logo {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--cosmic-gold), var(--cosmic-cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .creator-info {
+            font-size: 0.9rem;
+            color: var(--cosmic-cyan);
+            font-family: 'Space Grotesk', sans-serif;
+            margin-left: 15px;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 215, 0, 0.1);
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            margin-bottom: 20px;
+        }
+
+        .glass-card:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 215, 0, 0.3);
+            box-shadow: 0 12px 48px rgba(255, 215, 0, 0.15);
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Space Grotesk', sans-serif;
+            color: var(--cosmic-light);
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--cosmic-gold), var(--cosmic-cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--cosmic-gold);
+        }
+
+        .income-counter {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--cosmic-gold);
+            text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+            animation: pulse-glow 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% {
+                text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+            }
+            50% {
+                text-shadow: 0 0 40px rgba(255, 215, 0, 0.8);
+            }
+        }
+
+        .btn {
+            font-family: 'Space Grotesk', sans-serif;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--cosmic-gold), var(--cosmic-cyan));
+            color: var(--cosmic-dark);
+            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(255, 215, 0, 0.5);
+        }
+
+        .btn-secondary {
+            background: rgba(139, 92, 246, 0.2);
+            color: var(--cosmic-cyan);
+            border: 1px solid var(--cosmic-cyan);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(139, 92, 246, 0.3);
+            box-shadow: 0 0 20px rgba(0, 240, 255, 0.3);
+        }
+
+        .flex-between {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .flex-col {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .text-sm {
+            font-size: 0.875rem;
+        }
+
+        .text-xs {
+            font-size: 0.75rem;
+        }
+
+        .text-gold {
+            color: var(--cosmic-gold);
+        }
+
+        .text-cyan {
+            color: var(--cosmic-cyan);
+        }
+
+        .text-light {
+            color: var(--cosmic-light);
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .mb-4 {
+            margin-bottom: 1rem;
+        }
+
+        .mt-4 {
+            margin-top: 1rem;
+        }
+
+        .py-4 {
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+        }
+
+        .px-4 {
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+
+        .rounded-full {
+            border-radius: 9999px;
+        }
+
+        .bg-cyan-20 {
+            background-color: rgba(0, 240, 255, 0.2);
+        }
+
+        .text-purple {
+            color: var(--cosmic-purple);
+        }
+
+        .bg-purple-20 {
+            background-color: rgba(139, 92, 246, 0.2);
+        }
+
+        .footer {
+            width: 100%;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 40px;
+            border-top: 1px solid rgba(255, 215, 0, 0.2);
+            font-size: 0.8rem;
+            color: var(--cosmic-light);
+        }
+
+        .footer strong {
+            color: var(--cosmic-gold);
+        }
+
+        .footer a {
+            color: var(--cosmic-cyan);
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                gap: 10px;
+            }
+            .creator-info {
+                margin-left: 0;
+            }
+            .logo {
+                font-size: 2rem;
+            }
+            h1 {
+                font-size: 2.5rem;
+            }
+            .income-counter {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div style="display: flex; align-items: center;">
+                <div class="logo">⚛ ETERNUM</div>
+                <span class="creator-info">By Rrandom • Accra, Ghana</span>
+            </div>
+        </div>
+
+        <h1 class="mb-4">Your Universum Dashboard</h1>
+
+        <div class="glass-card">
+            <h2 class="text-gold mb-4">Your Eternum Universe</h2>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-bottom: 20px;">
+                <div class="glass-card">
+                    <p class="text-light text-sm mb-2">Total Earnings</p>
+                    <div class="income-counter" id="totalEarnings">GH¢ 0.00</div>
+                    <p class="text-cyan text-xs mt-2">All-time accumulated</p>
+                </div>
+
+                <div class="glass-card">
+                    <p class="text-light text-sm mb-2">Monthly Projection</p>
+                    <div class="income-counter" id="monthlyProjection">GH¢ 0.00</div>
+                    <p class="text-cyan text-xs mt-2">From active threads</p>
+                </div>
+
+                <div class="glass-card">
+                    <p class="text-light text-sm mb-2">Active Threads</p>
+                    <div class="income-counter" id="activeThreads">0</div>
+                    <p class="text-cyan text-xs mt-2">Generating value</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="glass-card">
+            <h3 class="text-cyan mb-4">Your Value Threads</h3>
+            <div id="threadsContainer" style="display: flex; flex-direction: column; gap: 15px;">
+                <!-- Thread cards will be injected here -->
+                <p class="text-light">No threads yet. Activate the Universum Engine to generate your first value threads.</p>
+            </div>
+        </div>
+
+        <div class="glass-card text-center">
+            <h3 class="text-cyan mb-4">Ready to Generate Your Universe?</h3>
+            <p class="text-light mb-4">
+                Activate the Universum Engine to generate 3 eternal value threads tailored to your profile.
+            </p>
+            <button class="btn btn-primary" id="activateEngineBtn">
+                🚀 Activate Universum Engine
+            </button>
+        </div>
+    </div>
+
+    <div class="footer">
+        © 2026 <strong>Rrandom Studios</strong> • Usman • Accra, Ghana
+        <p class="text-xs mt-2">
+            Eternum: The Universum Engine. Powered by Grok AI, Supabase, and Stripe/Paystack.
+        </p>
+        <p class="text-xs mt-2">
+            For privacy concerns, contact <a href="mailto:usman@eternum.com">usman@eternum.com</a>
+        </p>
+    </div>
+
+    <script>
+        let threads = [];
+        let totalEarnings = 0;
+        let monthlyProjection = 0;
+
+        const updateDashboard = () => {
+            document.getElementById('totalEarnings').textContent = `GH¢ ${totalEarnings.toFixed(2)}`;
+            document.getElementById('monthlyProjection').textContent = `GH¢ ${monthlyProjection.toFixed(2)}`;
+            document.getElementById('activeThreads').textContent = threads.filter(t => t.status === 'active').length;
+
+            const threadsContainer = document.getElementById('threadsContainer');
+            threadsContainer.innerHTML = ''; // Clear existing threads
+
+            if (threads.length === 0) {
+                threadsContainer.innerHTML = '<p class="text-light">No threads yet. Activate the Universum Engine to generate your first value threads.</p>';
+            } else {
+                threads.forEach(thread => {
+                    const threadCard = document.createElement('div');
+                    threadCard.className = 'glass-card';
+                    threadCard.innerHTML = `
+                        <div class="flex-between mb-2">
+                            <h4 class="text-lg text-gold">${thread.title}</h4>
+                            <span class="px-3 py-1 rounded-full text-xs font-bold ${thread.status === 'active' ? 'bg-cyan-20 text-cyan' : 'bg-purple-20 text-purple'}">
+                                ${thread.status.toUpperCase()}
+                            </span>
+                        </div>
+                        <p class="text-light text-sm mb-4">${thread.description}</p>
+                        <div class="flex-between">
+                            <div>
+                                <p class="text-light text-xs">Projected Monthly Income</p>
+                                <p class="text-gold font-bold">GH¢ ${thread.projected_income.toFixed(2)}</p>
+                            </div>
+                            <button class="btn btn-primary claim-btn" data-thread-id="${thread.id}">Claim & Auto-Execute</button>
+                        </div>
+                    `;
+                    threadsContainer.appendChild(threadCard);
+                });
+
+                document.querySelectorAll('.claim-btn').forEach(button => {
+                    button.addEventListener('click', (event) => {
+                        const threadId = event.target.dataset.threadId;
+                        alert(`Claiming and Auto-Executing thread: ${threadId}`);
+                        // In a real app, this would trigger an API call
+                    });
+                });
+            }
+        };
+
+        document.getElementById('activateEngineBtn').addEventListener('click', () => {
+            alert('Activating Universum Engine... (This would call the Grok API)');
+            // Simulate thread generation
+            const newThreads = [
+                {
+                    id: 'thread-1',
+                    title: 'Hyper-Local AI-Powered Agricultural Yield Optimization',
+                    description: 'Develop an AI model that analyzes local soil data, weather patterns, and crop prices in Accra to advise smallholder farmers on optimal planting schedules, crop choices, and resource allocation. Monetize through subscription services for farmers and data analytics for agricultural suppliers.',
+                    projected_income: 6500.00,
+                    status: 'active'
+                },
+                {
+                    id: 'thread-2',
+                    title: 'Decentralized Skill-Share Network for Accra',
+                    description: 'Create a blockchain-based platform where individuals in Accra can tokenize their skills and offer them as micro-services. Users earn GH¢ for completing tasks, and the platform takes a small transaction fee.',
+                    projected_income: 8000.00,
+                    status: 'active'
+                },
+                {
+                    id: 'thread-3',
+                    title: 'Emergent Waste-to-Energy Micro-Grids in Ghanaian Communities',
+                    description: 'Design and implement small-scale waste-to-energy conversion units in underserved communities in Ghana, turning organic waste into biogas for electricity. Revenue generated from selling surplus energy back to the grid or directly to local businesses.',
+                    projected_income: 12000.00,
+                    status: 'active'
+                },
+            ];
+            threads = newThreads;
+            totalEarnings += newThreads.reduce((sum, t) => sum + t.projected_income, 0);
+            monthlyProjection += newThreads.reduce((sum, t) => sum + t.projected_income, 0);
+            updateDashboard();
+        });
+
+        // Initial dashboard update
+        updateDashboard();
+    </script>
+</body>
+</html>
