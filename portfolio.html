@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rrandom - Professional Portfolio</title>
+    <meta name="description" content="Rrandom - Professional portfolio showcasing apps, photography, videography, and creative projects.">
+    <meta property="og:title" content="Rrandom - Creative Portfolio">
+    <meta property="og:description" content="Professional portfolio featuring innovative applications, photography, videography, and creative work">
+    <meta property="og:type" content="website">
+    
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #0f172a;
+            --secondary: #1e293b;
+            --accent: #3b82f6;
+            --text-primary: #f1f5f9;
+            --text-secondary: #cbd5e1;
+            --border: #334155;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1a1f35 50%, #0f172a 100%);
+            color: var(--text-primary);
+            overflow-x: hidden;
+        }
+
+        .font-space {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            z-index: 50;
+            padding: 1rem 2rem;
+        }
+
+        nav .container {
+            max-width: 7xl;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            font-family: 'Space Grotesk', sans-serif;
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        nav .menu {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        nav .menu a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+
+        nav .menu a:hover {
+            color: var(--accent);
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 80px;
+            padding: 6rem 2rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #3b82f6 0%, #60a5fa 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            font-weight: 300;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 2rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 0.95rem;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: white;
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--accent);
+            border: 1.5px solid var(--accent);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(59, 130, 246, 0.1);
+            transform: translateY(-2px);
+        }
+
+        /* Section */
+        section {
+            padding: 5rem 2rem;
+            max-width: 7xl;
+            margin: 0 auto;
+        }
+
+        section h2 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .section-subtitle {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            margin-bottom: 3rem;
+            font-weight: 300;
+        }
+
+        /* Grid */
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        /* Card */
+        .card {
+            background: linear-gradient(135deg, rgba(30, 41, 59, 0.5) 0%, rgba(15, 23, 42, 0.5) 100%);
+            border: 1px solid var(--border);
+            border-radius: 0.75rem;
+            overflow: hidden;
+            transition: all 0.3s;
+            display: flex;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .card:hover {
+            border-color: var(--accent);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(59, 130, 246, 0.15);
+        }
+
+        .card-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            overflow: hidden;
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+        }
+
+        .card-body {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .card-description {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .card-footer {
+            margin-top: auto;
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            display: inline-block;
+            background: rgba(59, 130, 246, 0.15);
+            color: var(--accent);
+            padding: 0.35rem 0.75rem;
+            border-radius: 0.35rem;
+            font-size: 0.8rem;
+            font-weight: 600;
+            border: 1px solid rgba(59, 130, 246, 0.3);
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(15, 23, 42, 0.95);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            border-radius: 0.75rem;
+            padding: 2rem;
+            max-width: 800px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            animation: modalSlide 0.3s ease-out;
+        }
+
+        @keyframes modalSlide {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .close-btn:hover {
+            color: var(--accent);
+        }
+
+        .modal-image {
+            width: 100%;
+            max-height: 400px;
+            object-fit: cover;
+            border-radius: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Toast */
+        .toast {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            color: var(--text-primary);
+            padding: 1rem 1.5rem;
+            border-radius: 0.5rem;
+            z-index: 2000;
+            animation: slideIn 0.3s ease-out;
+            max-width: 400px;
+            display: none;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .toast.success {
+            border-left: 3px solid #10b981;
+        }
+
+        .toast.error {
+            border-left: 3px solid #ef4444;
+        }
+
+        .toast.warning {
+            border-left: 3px solid #f59e0b;
+        }
+
+        /* Contact Form */
+        .contact-form {
+            background: linear-gradient(135deg, rgba(30, 41, 59, 0.5) 0%, rgba(15, 23, 42, 0.5) 100%);
+            border: 1px solid var(--border);
+            border-radius: 0.75rem;
+            padding: 2rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid var(--border);
+            border-radius: 0.5rem;
+            color: var(--text-primary);
+            font-family: 'Inter', sans-serif;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.8) 0%, rgba(30, 41, 59, 0.5) 100%);
+            border-top: 1px solid var(--border);
+            padding: 3rem 2rem;
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        /* Scroll to Top */
+        .scroll-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 50px;
+            height: 50px;
+            background: var(--accent);
+            border: none;
+            border-radius: 50%;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 100;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+        }
+
+        .scroll-top.show {
+            display: flex;
+        }
+
+        .scroll-top:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            nav .menu {
+                gap: 1rem;
+                font-size: 0.9rem;
+            }
+
+            section h2 {
+                font-size: 2rem;
+            }
+
+            .grid-3, .grid-2 {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <a href="#" class="logo">Rrandom</a>
+            <ul class="menu">
+                <li><a href="#apps">Apps</a></li>
+                <li><a href="#photography">Photography</a></li>
+                <li><a href="#videography">Videography</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Creative Solutions & Visual Storytelling</h1>
+        <p>Professional developer, photographer, and videographer crafting exceptional digital experiences and capturing moments that matter.</p>
+        <div style="margin-top: 2rem;">
+            <button class="btn btn-primary" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})">Get In Touch</button>
+            <button class="btn btn-secondary" onclick="document.getElementById('apps').scrollIntoView({behavior: 'smooth'})" style="margin-left: 1rem;">View Portfolio</button>
+        </div>
+    </section>
+
+    <!-- Apps Section -->
+    <section id="apps">
+        <h2>Applications</h2>
+        <p class="section-subtitle">Innovative apps designed with clean code and user-centric experiences</p>
+        <div class="grid-2" id="appsGrid">
+            <!-- Apps will be added here by JavaScript -->
+        </div>
+    </section>
+
+    <!-- Photography Section -->
+    <section id="photography">
+        <h2>Photography</h2>
+        <p class="section-subtitle">Visual storytelling through photography - capturing essence and moments</p>
+        <div class="grid-3" id="photoGrid">
+            <!-- Photos will be added here by JavaScript -->
+        </div>
+    </section>
+
+    <!-- Videography Section -->
+    <section id="videography">
+        <h2>Videography</h2>
+        <p class="section-subtitle">Professional video production and cinematic content creation</p>
+        <div class="grid-3" id="videoGrid">
+            <!-- Videos will be added here by JavaScript -->
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2>Get In Touch</h2>
+        <p class="section-subtitle">Have a project in mind? Let's collaborate</p>
+        <form class="contact-form" onsubmit="handleContactSubmit(event)">
+            <div class="form-group">
+                <label for="name">Name *</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email *</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="subject">Subject</label>
+                <input type="text" id="subject" name="subject">
+            </div>
+            <div class="form-group">
+                <label for="message">Message *</label>
+                <textarea id="message" name="message" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Rrandom. All rights reserved. | Accra, Ghana</p>
+    </footer>
+
+    <!-- Scroll to Top Button -->
+    <button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">↑</button>
+
+    <!-- Modal for Details -->
+    <div id="modal" class="modal" onclick="closeModal(event)">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <button class="close-btn" onclick="closeModal()">×</button>
+            <img id="modalImage" class="modal-image" alt="">
+            <h2 id="modalTitle" style="color: #f1f5f9; margin-bottom: 0.5rem;"></h2>
+            <p id="modalDescription" style="color: #cbd5e1; margin-bottom: 1rem;"></p>
+            <div id="modalTags"></div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast"></div>
+
+    <script>
+        // Sample Data
+        const appsData = [
+            {
+                id: 1,
+                title: "FinTrack Pro",
+                description: "Advanced financial management application with real-time analytics, budget tracking, and investment portfolio management.",
+                tags: ["React", "Node.js", "MongoDB", "Chart.js"],
+                image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=500&h=300&fit=crop"
+            },
+            {
+                id: 2,
+                title: "Wellness Hub",
+                description: "Comprehensive health and wellness platform featuring meal planning, workout tracking, and personalized health insights.",
+                tags: ["React Native", "Firebase", "ML", "Health APIs"],
+                image: "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=500&h=300&fit=crop"
+            },
+            {
+                id: 3,
+                title: "TaskFlow",
+                description: "Collaborative project management tool with real-time updates, team communication, and advanced task automation.",
+                tags: ["Vue.js", "Django", "PostgreSQL", "WebSocket"],
+                image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=500&h=300&fit=crop"
+            },
+            {
+                id: 4,
+                title: "E-Commerce Prime",
+                description: "Full-stack e-commerce platform with secure payment integration, inventory management, and customer analytics.",
+                tags: ["Next.js", "Stripe", "Supabase", "TailwindCSS"],
+                image: "https://images.unsplash.com/photo-1460925895917-adf4e565db18?w=500&h=300&fit=crop"
+            }
+        ];
+
+        const photoData = [
+            {
+                id: 1,
+                title: "Urban Architecture",
+                description: "Contemporary city photography capturing modern architectural elements and geometric compositions.",
+                tags: ["Architecture", "Urban", "Sony A7III"],
+                image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=500&h=300&fit=crop"
+            },
+            {
+                id: 2,
+                title: "Portrait Series",
+                description: "Intimate portrait photography exploring human expression and natural lighting techniques.",
+                tags: ["Portrait", "Natural Light", "Professional"],
+                image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&h=300&fit=crop"
+            },
+            {
+                id: 3,
+                title: "Landscape Moments",
+                description: "Breathtaking landscape photography from diverse geographical locations with stunning natural light.",
+                tags: ["Landscape", "Nature", "Travel"],
+                image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=500&h=300&fit=crop"
+            },
+            {
+                id: 4,
+                title: "Street Life",
+                description: "Documentary-style street photography capturing authentic moments and cultural diversity.",
+                tags: ["Street Photography", "Documentary", "Color"],
+                image: "https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?w=500&h=300&fit=crop"
+            },
+            {
+                id: 5,
+                title: "Product Photography",
+                description: "Commercial product photography with professional lighting and meticulous composition.",
+                tags: ["Product", "Commercial", "Lighting"],
+                image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500&h=300&fit=crop"
+            },
+            {
+                id: 6,
+                title: "Event Coverage",
+                description: "Professional event photography capturing decisive moments and emotional narratives.",
+                tags: ["Events", "Professional", "Coverage"],
+                image: "https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=500&h=300&fit=crop"
+            }
+        ];
+
+        const videoData = [
+            {
+                id: 1,
+                title: "Product Launch Campaign",
+                description: "Professional promotional video for tech product launch with cinematic editing and motion graphics.",
+                tags: ["Promotion", "4K", "Motion Graphics"],
+                image: "https://images.unsplash.com/photo-1533050487297-4d71bcdd2085?w=500&h=300&fit=crop",
+                url: "https://www.youtube.com/embed/dQw4w9WgXcQ"
+            },
+            {
+                id: 2,
+                title: "Brand Documentary",
+                description: "Compelling brand story told through documentary-style videography and authentic interviews.",
+                tags: ["Documentary", "Branding", "Interview"],
+                image: "https://images.unsplash.com/photo-1516280440614-37939bbacd81?w=500&h=300&fit=crop",
+                url: "https://www.youtube.com/embed/jNQXAC9IVRw"
+            },
+            {
+                id: 3,
+                title: "Corporate Training",
+                description: "Educational video content for corporate training with clear messaging and professional production.",
+                tags: ["Training", "Educational", "Corporate"],
+                image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=500&h=300&fit=crop",
+                url: "https://www.youtube.com/embed/9bZkp7q19f0"
+            }
+        ];
+
+        // Render Apps
+        function renderApps() {
+            const grid = document.getElementById('appsGrid');
+            grid.innerHTML = appsData.map(app => `
+                <div class="card" onclick="openModal('${app.title}', '${app.description}', '${app.image}', ${JSON.stringify(app.tags).replace(/"/g, '&quot;')})">
+                    <img src="${app.image}" alt="${app.title}" class="card-image">
+                    <div class="card-body">
+                        <h3 class="card-title">${app.title}</h3>
+                        <p class="card-description">${app.description}</p>
+                        <div class="card-footer">
+                            ${app.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Render Photos
+        function renderPhotos() {
+            const grid = document.getElementById('photoGrid');
+            grid.innerHTML = photoData.map(photo => `
+                <div class="card" onclick="openModal('${photo.title}', '${photo.description}', '${photo.image}', ${JSON.stringify(photo.tags).replace(/"/g, '&quot;')})">
+                    <img src="${photo.image}" alt="${photo.title}" class="card-image">
+                    <div class="card-body">
+                        <h3 class="card-title">${photo.title}</h3>
+                        <p class="card-description">${photo.description}</p>
+                        <div class="card-footer">
+                            ${photo.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Render Videos
+        function renderVideos() {
+            const grid = document.getElementById('videoGrid');
+            grid.innerHTML = videoData.map(video => `
+                <div class="card" onclick="openVideoModal('${video.title}', '${video.description}', '${video.url}', ${JSON.stringify(video.tags).replace(/"/g, '&quot;')})">
+                    <img src="${video.image}" alt="${video.title}" class="card-image">
+                    <div class="card-body">
+                        <h3 class="card-title">${video.title}</h3>
+                        <p class="card-description">${video.description}</p>
+                        <div class="card-footer">
+                            ${video.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Modal Functions
+        function openModal(title, description, image, tags) {
+            document.getElementById('modalTitle').textContent = title;
+            document.getElementById('modalDescription').textContent = description;
+            document.getElementById('modalImage').src = image;
+            document.getElementById('modalImage').style.display = 'block';
+            document.getElementById('modalTags').innerHTML = tags.map(tag => `<span class="tag">${tag}</span>`).join('');
+            document.getElementById('modal').classList.add('active');
+        }
+
+        function openVideoModal(title, description, url, tags) {
+            document.getElementById('modalTitle').textContent = title;
+            document.getElementById('modalDescription').textContent = description;
+            document.getElementById('modalImage').style.display = 'none';
+            
+            let html = `<iframe width="100%" height="400" src="${url}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="border-radius: 0.5rem; margin-bottom: 1.5rem;"></iframe>`;
+            html += tags.map(tag => `<span class="tag">${tag}</span>`).join('');
+            document.getElementById('modalTags').innerHTML = html;
+            document.getElementById('modal').classList.add('active');
+        }
+
+        function closeModal(event) {
+            if (event && event.target.id !== 'modal') return;
+            document.getElementById('modal').classList.remove('active');
+        }
+
+        // Contact Form
+        function handleContactSubmit(event) {
+            event.preventDefault();
+            
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const message = document.getElementById('message').value.trim();
+
+            if (!name || !email || !message) {
+                showToast('Please fill in all required fields', 'error');
+                return;
+            }
+
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                showToast('Please enter a valid email address', 'error');
+                return;
+            }
+
+            showToast('Message sent successfully! I\'ll get back to you soon.', 'success');
+            event.target.reset();
+        }
+
+        // Toast Notification
+        function showToast(message, type = 'success') {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.className = `toast ${type}`;
+            toast.style.display = 'block';
+            
+            setTimeout(() => {
+                toast.style.display = 'none';
+            }, 3000);
+        }
+
+        // Scroll to Top Button
+        window.addEventListener('scroll', () => {
+            const scrollTop = document.getElementById('scrollTop');
+            if (window.scrollY > 300) {
+                scrollTop.classList.add('show');
+            } else {
+                scrollTop.classList.remove('show');
+            }
+        });
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            renderApps();
+            renderPhotos();
+            renderVideos();
+        });
+    </script>
+</body>
+</html>
